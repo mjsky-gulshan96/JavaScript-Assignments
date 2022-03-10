@@ -21,28 +21,39 @@ class MyPromise {
 }
 
 
-function myfun(callback) {
-    let promise = new MyPromise(callback);
-    return promise;
-}
-
-let promiseResult = myfun(handlePromise);
+let promiseResult = NewPromise(handlePromise);
 console.log(promiseResult);
+
+function NewPromise(callback) {
+    if (typeof (callback) !== 'function') {
+        console.log('Not A Function!');
+        return;
+    } else {
+        let promise = new MyPromise(callback);
+        return promise;
+    }
+}
 
 function handlePromise(resolve, reject) {
     let data = student;
     if (data) {
-        resolve()
+        resolve('hello')
         // console.log(data);
     } else {
-        reject()
+        reject('error')
     }
 }
 
+
 // or 
 
-// let promise2 = new MyPromise(function(resolve,reject){
-//     resolve()
-// })
+let promise2 = new MyPromise(function (resolve, reject) {
+    let data = student;
+    if (data) {
+        resolve()
+    } else {
+        reject()
+    }
+})
 
-// console.log(promise2);
+console.log(promise2);
