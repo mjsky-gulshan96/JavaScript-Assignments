@@ -6,6 +6,7 @@ function mapPrecedence() {
     precedence.set('+', 1)
     precedence.set('x', 2)
     precedence.set('÷', 2)
+    precedence.set('%', 3)
     return precedence;
 }
 
@@ -35,11 +36,11 @@ function calculate(array) {
     let maxPrecedence = operatorPrecendence(array)
 
     while (maxPrecedence > 0) {
+        console.log('currentPrecedence ', maxPrecedence);
         // loop on all the operators in array
         for (let i = 1; i < array.length; i += 2) {
             // getting precedence of current operator
             let currentPrecedence = checkPrecedence(array[i])
-            console.log('currentPrecedence ', currentPrecedence);
             if (currentPrecedence === maxPrecedence) {
                 // if currentPrecedence matches then get the current operator
                 let operator = array[i];
@@ -66,8 +67,8 @@ function calculate(array) {
                         i-=2;
                         break;
                     case "%":
-                        let percentage = percent(array[i - 1], array[i + 1])
-                        array[i + 1] = percentage + "";
+                        let percentage = percent(array[i - 1], array[i + 1]) + '';
+                        array.splice(i-1,3,percentage);
                         break;
                     default:
                         break;
