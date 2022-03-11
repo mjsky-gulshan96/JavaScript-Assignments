@@ -39,10 +39,13 @@ clearAll.addEventListener('click', function () {
 
 // on equal to
 compute.addEventListener('click', function () {
-    const arr = calculator.equalTo();
-    if (arr === undefined) return;
-    let val=calculate(arr);
+    // equal method of calculator return a array
+    const array = calculator.equalTo();
+    if (array === undefined) return;
+    // sending the array for calculator in calculatorFunction
+    let val=calculate(array);
 
+    // updating the result returned from calculate function
     document.querySelector('#display').value = val;
     calculator.screenMemory = val;
     calculator.screenDisplay = val;

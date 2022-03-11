@@ -1,15 +1,49 @@
 
+// mapping all the operator with a precedence value
+function mapPrecedence() {
+    const precedence = new Map();
+    precedence.set('-', 1)
+    precedence.set('+', 1)
+    precedence.set('x', 2)
+    precedence.set('÷', 2)
+    return precedence;
+}
+
+// checking a operator precedence
+function checkPrecedence(oper) {
+    let precedence =mapPrecedence()
+    return precedence.get(oper)
+}
+
+// returning the max precedence in array
+function operatorPrecendence(arr) {
+    let max = 1;
+    let precedence =mapPrecedence()
+    for (let i = 1; i < arr.length; i += 2) {
+        let val = precedence.get(arr[i])
+        if (val > max) {
+            max = val;
+        }
+    }
+    return max;
+}
+
 
 function calculate(array) {
 
+    // operatorPrecendence will return the max precedence in array;
     let maxPrecedence = operatorPrecendence(array)
 
     while (maxPrecedence > 0) {
+        // loop on all the operators in array
         for (let i = 1; i < array.length; i += 2) {
-            let val = checkPrecedence(array[i])
-            if (val === maxPrecedence) {
+            // getting precedence of current operator
+            let currentPrecedence = checkPrecedence(array[i])
+            console.log('currentPrecedence ', currentPrecedence);
+            if (currentPrecedence === maxPrecedence) {
+                // if currentPrecedence matches then get the current operator
                 let operator = array[i];
-                console.log(operator);
+                console.log('current Operator ',operator);
                 switch (operator) {
                     case "+":
                         let sum = add(array[i - 1], array[i + 1]) + '';
@@ -45,34 +79,6 @@ function calculate(array) {
     }
     return array[0];
 }
-
-function mapPrecedence() {
-    const precedence = new Map();
-    precedence.set('-', 1)
-    precedence.set('+', 1)
-    precedence.set('x', 2)
-    precedence.set('÷', 2)
-    return precedence;
-}
-
-function operatorPrecendence(arr) {
-    let max = 1;
-
-    let precedence =mapPrecedence()
-    for (let i = 1; i < arr.length; i += 2) {
-        let val = precedence.get(arr[i])
-        if (val > max) {
-            max = val;
-        }
-    }
-    return max;
-}
-
-function checkPrecedence(oper) {
-    let precedence =mapPrecedence()
-    return precedence.get(oper)
-}
-
 
 // all the arithemtic functions
 function add(a, b) {
