@@ -13,8 +13,9 @@ import calculate from "./CalculatorFunction.js";
 for (const btn of buttons) {
     if (btn.id === 'on_off') {
         continue;
-    }
-    btn.disabled = true;
+    } else {
+        btn.disabled = true;
+    }  
 }
 
 powerBtn.addEventListener('click', function () {
@@ -24,8 +25,9 @@ powerBtn.addEventListener('click', function () {
             btn.style.backgroundColor = '#666666'
             if (btn.id === 'on_off') {
                 continue;
+            } else {
+                btn.disabled = false;
             }
-            btn.disabled = false;
         }
         let display = document.getElementById('display');
         display.setAttribute('style', 'background-color:#8fb3a3; color: #3b3b3b;')
