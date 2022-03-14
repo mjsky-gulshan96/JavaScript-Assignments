@@ -21,13 +21,13 @@ class MyPromise {
             callback(success, failure)
         } catch (error) {
             failure(error);
-        }      
+        }
     }
 
     then(onSuccess, onFailure) {
-        if (this.PromiseState==='Fulfilled') {
+        if (this.PromiseState === 'Fulfilled') {
             onSuccess(this.value);
-        } else if(this.PromiseState==='Rejected') {
+        } else if (this.PromiseState === 'Rejected') {
             onFailure(this.value);
         }
     }
@@ -56,9 +56,9 @@ function handlePromise(resolve, reject) {
     }
 }
 
-promiseResult.then(function(){
+promiseResult.then(function () {
     console.log('resolved');
-},function(){
+}, function () {
     console.log('rejected');
 })
 
@@ -75,8 +75,8 @@ let promise2 = new MyPromise(function (resolve, reject) {
 
 console.log(promise2);
 
-promise2.then(function(){
+promise2.then(function () {
     console.log('Resolved');
-},function(){
+}, function () {
     console.log('Rejected');
 })

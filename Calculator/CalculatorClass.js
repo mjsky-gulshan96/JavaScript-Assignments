@@ -13,9 +13,6 @@ class Calculator {
         // handling two decimals in a number
         if (number === '.' && this.screenMemory.includes('.')) return;
 
-        // not doing anything wiht -ve button
-        if (number === '-ve') return;
-
         // appending the number to screenDisplay and screenMemory
         this.screenDisplay += number;
         this.screenMemory += number;
