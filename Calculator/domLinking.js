@@ -21,14 +21,12 @@ for (const btn of buttons) {
 powerBtn.addEventListener('click', function () {
     if (powerBtn.innerText === 'ON') {
         powerBtn.innerText = 'OFF';
+
         for (const btn of buttons) {
             btn.style.backgroundColor = '#666666'
-            if (btn.id === 'on_off') {
-                continue;
-            } else {
-                btn.disabled = false;
-            }
+            btn.disabled = false;
         }
+        
         let display = document.getElementById('display');
         display.setAttribute('style', 'background-color:#8fb3a3; color: #3b3b3b;')
     } else {
